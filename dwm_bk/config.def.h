@@ -9,13 +9,13 @@ static int smartgaps                      = 0;   /* 1 means no outer gap when th
 static const int swallowfloating          = 0;   /* 1 means swallow floating windows by default */
 static int showbar                        = 1;   /* 0 means no bar */
 static int topbar                         = 1;   /* 0 means bottom bar */
-static const int user_bh                  = 15;  /* 2 is the default spacing around the bar's font */
+static const int user_bh                  = 10;  /* 2 is the default spacing around the bar's font */
 static const int vertpad                  = 10;  /* vertical padding of bar */
-static const int sidepad                  = 13;  /* horizontal padding of bar */
+static const int sidepad                  = 10;  /* horizontal padding of bar */
 static const char buttonbar[]             = "";
 #define ICONSIZE                            10   /* icon size */
 #define ICONSPACING                         5    /* space between icon and title */
-static char font[]                        = "JetBrainsMono Nerd Font:style=Bold:size=14:antialias=true:autohint=true";
+static char font[]                        = "JetBrainsMono Nerd Font:style=Bold:size=16:antialias=true:autohint=true";
 static const char *fonts[]                = { font };
 static char normbgcolor[]                 = "#222222";
 static char normbordercolor[]             = "#444444";
@@ -46,12 +46,10 @@ typedef struct {
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spfiles", "-g", "170x40", "-e", "ranger", NULL };
 const char *spcmd3[] = {"st", "-n", "spmusic", "-g", "120x40", "-e", "cmus", NULL };
-const char *spcmd4[] = {"st", "-n", "spvol",    "-g", "144x41", "-e", "pulsemixer", NULL };
+const char *spcmd4[] = {"st", "-n", "spvol", "-g", "144x41", "-e", "pulsemixer", NULL };
 const char *spcmd5[] = {"obs", NULL };
 const char *spcmd6[] = {"qalculate-gtk", NULL };
 const char *spcmd7[] = {"st", "-n", "btop", "-g", "120x34", "-e", "btop", NULL };
-const char *spcmd8[] = {"st", "-n", "noter", "-g", "80x25", "-e", "noter.sh", NULL };
-
 static Sp scratchpads[] = {
   /* name          cmd  */
   {"spterm",      spcmd1},
@@ -61,7 +59,6 @@ static Sp scratchpads[] = {
   {"obs",         spcmd5},
   {"qalc",        spcmd6},
   {"btop",        spcmd7},
-  {"noter",       spcmd8},
 };
 
 /* tagging */
@@ -91,7 +88,6 @@ static const Rule rules[] = {
   { NULL,                  "obs",         NULL,      SPTAG(4),        1,          0,          1,        -1,     -1,-1,-1,-1,        -1      },
   { NULL,                 "qalc",         NULL,      SPTAG(5),        1,          0,          1,        -1,     -1,-1,-1,-1,        -1      },
   { NULL,                 "btop",         NULL,      SPTAG(6),        1,          0,          1,        -1,     -1,-1,-1,-1,        -1      },
-  { NULL,                 "noter",        NULL,      SPTAG(7),        1,          0,          1,        -1,     -1,-1,-1,-1,        -1      },
 };
 
 /* layout(s) */
@@ -183,7 +179,6 @@ static const Key keys[] = {
   { Mod1Mask,                             XK_F3,                          spawn,                     SHCMD("statusmic up") },
   { MODKEY,                               XK_r,                           spawn,                     SHCMD("rofi -show drun modi -show-icons") },
   { MODKEY,                               XK_e,                           spawn,                     SHCMD("st -e ranger") },
-  { MODKEY|ShiftMask,                     XK_l,                           spawn,                     SHCMD("setxkbmap dk") },
   { MODKEY|ShiftMask,                     XK_e,                           spawn,                     SHCMD("thunar") },
   { Mod1Mask,                             XK_z,                           spawn,                     SHCMD("statusmic mute") },
   { 0,                                    XF86XK_MonBrightnessUp,         spawn,                     SHCMD("brightnessctl up") },
@@ -267,7 +262,6 @@ static const Key keys[] = {
   { MODKEY,                               XK_F7,                          togglescratch,             {.ui = 4 } },
   { 0,                                    XF86XK_Calculator,              togglescratch,             {.ui = 5 } },
   { MODKEY,                               XK_F8,                          togglescratch,             {.ui = 6 } },
-  { MODKEY,                               XK_v,                           togglescratch,             {.ui = 7 } },
   TAGKEYS(                                XK_1,                           0)
   TAGKEYS(                                XK_2,                           1)
   TAGKEYS(                                XK_3,                           2)

@@ -1,0 +1,1 @@
+2142 wc.border_widt = 1;
